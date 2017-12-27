@@ -1,4 +1,4 @@
-package com.shanty.bard;
+package com.chantey.bard;
 
 import org.junit.Test;
 
