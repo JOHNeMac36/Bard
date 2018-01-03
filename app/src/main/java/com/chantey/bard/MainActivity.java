@@ -1,17 +1,17 @@
 package com.chantey.bard;
 
+import android.media.AudioAttributes;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.IOException;
+
 
 public class MainActivity extends AppCompatActivity {
-
-    private URL SERVER_URL = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,39 +22,48 @@ public class MainActivity extends AppCompatActivity {
         final String PORT = "8080";
 
         final Button testButton = findViewById(R.id.testButton);
-        final TextView testView = findViewById(R.id.testText);
 
-        try {
-            SERVER_URL = new URL("http://" + SERVER_IP + PORT);
-        } catch (MalformedURLException e) {
+        //set the audio attributes, data source, and event listeners for the MediaPlayer
+        final MediaPlayer songPlayer = new MediaPlayer();
+        songPlayer.setAudioAttributes(
+                new AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .build()
+        );
+
+        try{
+            songPlayer.setDataSource(SERVER_IP + PORT);
+        } catch (IllegalArgumentException | IOException e) {
             e.printStackTrace();
-            System.err.println("Failed to construct SERVER_URL");
+            System.err.println("Data source could not be set!");
         }
+
+        songPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
+                System.err.println("An error has occurred with the MediaPlayer");
+                return false;
+            }
+        });
+
+        songPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                songPlayer.start();
+            }
+        });
 
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (SERVER_URL != null){
-                    testView.setText(getTestStringFromServer(SERVER_URL));
-                } else {
-                    System.err.println("Failed to setText; SERVER_URL is null");
+                try {
+                    songPlayer.prepareAsync();
+                } catch (IllegalStateException e){
+                    e.printStackTrace();
                 }
             }
         });
-    }
-
-    //contact the server and returns whatever string it obtains from the server
-    // proof-of-concept test method
-    private String getTestStringFromServer(URL url){
-        String serverString;
-
-        try{
-
-        } catch(Exception e) {
-
-        }
-        //return the String that was requested from the server
-        return "test";
     }
 }
 
