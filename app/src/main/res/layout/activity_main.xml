@@ -1,27 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.chantey.bard.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/testText"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/top_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-    <Button
-        android:id="@+id/testButton"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="test">
 
-    </Button>
+        <ImageView
+            android:id="@+id/album1"
+            android:layout_width="168dp"
+            android:layout_height="168dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/gambino" />
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/testButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/play"
+            android:layout_margin="4dp"/>
+
+        <TextView
+            android:id="@+id/song1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Redbone"
+            android:layout_below="@id/album1"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"/>
+
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="104dp"
+                android:background="#121212">
+
+                <ImageView
+                    android:id="@+id/album2"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/hellfire" />
+
+                <TextView
+                    android:id="@+id/song2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/album2"
+                    android:text="Devilman no Uta"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="104dp"
+                android:background="#212121">
+
+                <ImageView
+                    android:id="@+id/album3"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/let_it_die" />
+
+                <TextView
+                    android:id="@+id/song3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/album3"
+                    android:text="Let It Die"
+                    android:textSize="24sp"
+                    android:textColor="@android:color/white"
+                    android:layout_centerVertical="true"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="104dp"
+                android:background="#121212">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#212121">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#121212">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#212121">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#121212">
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#212121">
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+</android.widget.LinearLayout>
