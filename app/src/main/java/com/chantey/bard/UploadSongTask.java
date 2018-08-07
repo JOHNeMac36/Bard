@@ -19,16 +19,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
 
 public class UploadSongTask extends AsyncTask<String, Void, Boolean> {
 
@@ -44,9 +34,12 @@ public class UploadSongTask extends AsyncTask<String, Void, Boolean> {
     protected Boolean doInBackground(String... strings){
         //this asynchronously uploads a file that the user has selected
 
+
+
         for (String string: strings) {
 
             try{
+                /*
 
                 HttpClient httpClient = HttpClients.createDefault();
                 HttpPost post = new HttpPost("http://10.0.0.20:80/fileupload"); // ip of port-forwarded port 80 on router
@@ -75,7 +68,7 @@ public class UploadSongTask extends AsyncTask<String, Void, Boolean> {
                 in.close();
 
                 Log.i(TAG, response.toString());
-                /*
+                */
 
                 URL url = new URL("http://10.0.0.20:80/fileupload"); // ip of port-forwarded port 80 on router
 
@@ -122,8 +115,6 @@ public class UploadSongTask extends AsyncTask<String, Void, Boolean> {
                 Log.i(TAG, response.toString());
 
                 connection.disconnect();
-
-              */
 
             } catch (IOException e) {
                 Log.e(TAG, e.toString());
