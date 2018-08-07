@@ -20,7 +20,7 @@
             android:layout_height="168dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/gambino" />
+            android:src="@drawable/album" />
 
         <Button
             android:id="@+id/testButton"
@@ -33,9 +33,9 @@
 
         <TextView
             android:id="@+id/song1"
+            android:text="Placeholder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Redbone"
             android:layout_below="@id/album1"
             android:layout_centerHorizontal="true"
             android:textSize="24sp"
@@ -64,8 +64,7 @@
                     android:id="@+id/album2"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/hellfire" />
+                    android:layout_margin="16dp" />
 
                 <TextView
                     android:id="@+id/song2"
@@ -73,7 +72,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/album2"
-                    android:text="Devilman no Uta"
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
 
@@ -88,15 +86,13 @@
                     android:id="@+id/album3"
                     android:layout_width="72dp"
                     android:layout_height="72dp"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/let_it_die" />
+                    android:layout_margin="16dp" />
 
                 <TextView
                     android:id="@+id/song3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/album3"
-                    android:text="Let It Die"
                     android:textSize="24sp"
                     android:textColor="@android:color/white"
                     android:layout_centerVertical="true"

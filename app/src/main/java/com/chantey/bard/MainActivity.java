@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
             public void onCompletion(MediaPlayer mediaPlayer) {
                 getNextSongFromServer(songPlayer, false);
                 tryToPlayMediaPlayerAsync(songPlayer);
-                demoRotation(); //only to be used for demonstration
             }
         });
 

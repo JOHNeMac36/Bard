@@ -6,16 +6,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -39,7 +33,16 @@ public class UploadSongTask extends AsyncTask<String, Void, Boolean> {
         for (String string: strings) {
 
             try{
+
                 /*
+
+                NOTE: This code never worked, but was an attempted solution to the issue with the
+                upload server (the server seemingly received data from my phone over the local
+                network, but a tangible file was never created). I think the data needs to be
+                formatted as multipart/form-data (the formidable node module is for
+                form submission). My next guess would be to try the android httpComponents Apache
+                library, the normal httpComponents did not work.
+
 
                 HttpClient httpClient = HttpClients.createDefault();
                 HttpPost post = new HttpPost("http://10.0.0.20:80/fileupload"); // ip of port-forwarded port 80 on router
@@ -69,6 +72,9 @@ public class UploadSongTask extends AsyncTask<String, Void, Boolean> {
 
                 Log.i(TAG, response.toString());
                 */
+
+                //this code successfully uploads data to the server, but the server never creates a
+                //tangible file.
 
                 URL url = new URL("http://10.0.0.20:80/fileupload"); // ip of port-forwarded port 80 on router
 
