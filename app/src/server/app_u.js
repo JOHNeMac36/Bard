@@ -3,6 +3,7 @@ const fs = require('fs');
 const formidable = require('formidable');
 const express = require('express');
 const util = require('util');
+const path = require('path');
 
 var app = express();
 
@@ -20,7 +21,13 @@ app.post('/fileupload', function(req, res){ //response to http server POST reque
 	console.log("POST request received at /fileupload");
 	res.writeHead(200, {'Content-Type' : 'text/plain'});
 	var form = formidable.IncomingForm();
-	form.uploadDir = __dirname + "/temp"
+
+	// creates uploads directory if doesn't already exist
+	const uploadDir = path.join(__dirname, 'uploads/');
+	if (!fs.existsSync(uploadDir)){
+		fs.mkdirSync(uploadDir);
+	}
+	form.uploadDir = uploadDir;
 	form.keepExtensions = true;
 	form.encoding = 'UTF-8';
 	
